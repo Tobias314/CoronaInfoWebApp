@@ -10,4 +10,4 @@ PHONE_NUMBERS_GESUNDHEITSAMT = {'Potsdam' : "0815"}
 def read_item(city_name: str):
     return {"phone_number": PHONE_NUMBERS_GESUNDHEITSAMT[city_name]}
 
-uvicorn.run(app, port=8000, reload=True)
+uvicorn.run(app, port=8000)
