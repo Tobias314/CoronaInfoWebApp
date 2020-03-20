@@ -1,8 +1,10 @@
 <template>
   <body>
-     <li v-for="item in themes" :key="item.id">
-    {{ item.name }}
-    <button @click="gotoinfo(item.link)"> go to info </button>
+    All the Corona Infos you need
+    <li v-for="item in themes" :key="item.id">
+      <button @click="gotoinfo(item.link)"> 
+        {{ item.name }}
+      </button>
     </li>
   </body>
 </template>
