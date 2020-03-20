@@ -1,10 +1,8 @@
 <template>
   <body>
-     <main>
-      <transition name="component-fade" mode="out-in">
-        <router-view />
-      </transition>
-    </main>
+     <li v-for="item in themes" :key="item.id">
+    {{ item.name }}
+    </li>
   </body>
 </template>
 
