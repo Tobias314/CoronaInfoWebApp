@@ -1,13 +1,11 @@
-from fastapi import FastAPI
+from fastapi import APIRouter
 import uvicorn
 
-app = FastAPI()
+router = APIRouter()
 
 #DATA
-PHONE_NUMBERS_GESUNDHEITSAMT = {'Potsdam' : "0815"}
+PHONE_NUMBERS_HEALTH_DEPARTMENT = {'Potsdam' : "0815"}
 
-@app.get("/phone_number/gesundheitsamt/{city_name}")
+@router.get("/phone_number/health_department/{city_name}")
 def read_item(city_name: str):
-    return {"phone_number": PHONE_NUMBERS_GESUNDHEITSAMT[city_name]}
-
-uvicorn.run(app, port=8000)
+    return {"phone_number": PHONE_NUMBERS_HEALTH_DEPARTMENT[city_name]}
