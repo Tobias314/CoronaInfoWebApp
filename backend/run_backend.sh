@@ -1,1 +1,0 @@
-uvicorn api.phonenumbers:app --reload
