@@ -12,7 +12,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
 SAMPLE_RANGE_NAME = 'Haupt!A6:A42'
 
-class GoogleSpreadSheetCrawler():
+class GoogleSpreadSheetCrawler:
 
     def __init__(self):
         """Shows basic usage of the Sheets API.
