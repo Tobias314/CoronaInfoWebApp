@@ -7,7 +7,7 @@ if os.path.exists(config.DATABASE_PATH):
     os.remove(config.DATABASE_PATH)
 
 db = DatabaseConnection()
-c = db.cursor
+c = db.cursor()
 
 # Create district table
 c.execute('''CREATE TABLE Districts

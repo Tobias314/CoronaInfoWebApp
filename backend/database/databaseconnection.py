@@ -25,10 +25,12 @@ class DatabaseConnection():
 
     def __init__(self):
         self.connection = sqlite3.connect(config.DATABASE_PATH)
-        self.cursor = self.connection.cursor()
 
     def __del__(self):
         self.connection.close()
+
+    def cursor(self):
+        return self.connection.cursor()
 
     def commit(self):
         self.connection.commit()

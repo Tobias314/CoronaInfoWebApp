@@ -16,8 +16,8 @@ class DistrictCaseNumbersSaxonyAnhaltSpider(scrapy.Spider):
         date = datetime.datetime(int(reg.group(3)),int(reg.group(2)),int(reg.group(1)),int(reg.group(4)),int(reg.group(5)))
         case_numbers = response.css('td:nth-child(2)')
         districts = response.css('td:nth-child(1)')
-        c = self.dbc.cursor
-        for i in range(13):
+        c = self.dbc.cursor()
+        for i in range(14):
             district_name = districts[i].css('::text').get()[3:]
             case_number = int(case_numbers[i].css('::text').get())
 
