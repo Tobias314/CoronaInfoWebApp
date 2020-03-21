@@ -1,13 +1,12 @@
 <template>
   <body>
-    <a :href="'//' + 'covapp.charite.de/questionaire'" target="_blank">
-      Quiz vom Charite
-    </a>
+    <div>insert medical info here</div>
+
   </body>
 </template>
 
 <script>
-import Api from "./api.js";
+import Api from "../api.js";
 
 export default {
   name: 'medical_info',

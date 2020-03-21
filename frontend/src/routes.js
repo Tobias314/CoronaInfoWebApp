@@ -1,12 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
 
+import CoronaUnsureInfo from "./components/medical/doihavecorona.vue";
+import CoronaHavingInfo from "./components/medical/coronaandnow.vue";
+import MentalHealthInfo from "./components/medical/mentalhealth.vue";
+import stayHome from "./components/legal/stayhomeinfo.vue"
+import financialSupoort from "./components/legal/financialSupport.vue";
+import VirusInfo from "./components/virus/virusInfo.vue";
+import Research from "./components/virus/research.vue";
+import Distribution from "./components/virus/distribution.vue";
 import List from "./components/list.vue";
-import LegalInfo from "./components/legalInfo.vue";
-import CoronaHavingInfo from "./components/coronaandnow.vue";
-import CoronaUnsureInfo from "./components/doihavecorona.vue";
-import GeneralInfo from "./components/generalInfo.vue";
-import MentalHealthInfo from "./components/mentalhealth.vue";
 
 Vue.use(Router);
 
@@ -14,24 +17,36 @@ const router = new Router({
   mode: "history",
   routes: [
     {
-      path: "/legal",
-      component: LegalInfo
+      path: "/doihavecorona",
+      component: CoronaUnsureInfo
     },
     {
       path: "/coronaandnow",
       component: CoronaHavingInfo
     },
     {
-      path: "/doihavecorona",
-      component: CoronaUnsureInfo
+      path: "/mentalhealth",
+      component: MentalHealthInfo
+    },
+    {
+      path: "/stayhome",
+      component: stayHome
+    },
+    {
+      path: "/finances",
+      component: financialSupoort
     },
     {
       path: "/virus",
-      component: GeneralInfo
+      component: VirusInfo
     },
     {
-      path: "/mentalhealth",
-      component: MentalHealthInfo
+      path: "/research",
+      component: Research
+    },
+    {
+      path: "/distribution",
+      component: Distribution
     },
     {
       path: "*",

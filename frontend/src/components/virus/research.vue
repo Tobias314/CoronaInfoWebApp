@@ -1,13 +1,13 @@
 <template>
   <body>
-     insert legal info here
+     Christian Drosten die kleine Süßmaus wird uns schon retten.
   </body>
 </template>
 
 <script>
 
 export default {
-  name: 'legal_info',
+  name: 'general_info',
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <body>
-     insert general info here
+     Exponentiell. Ja, Oma, das ist sehr schnell.
   </body>
 </template>
 

@@ -34,12 +34,12 @@ export default {
                                                                 {name: "Ich habe Corona, was sollte ich tun?", id: 12, link: "/coronaandnow"}, 
                                                                 {name: "Wo bekomme ich Hilfe bei psychischen Problemen?", id: 13, link: "/mentalhealth"}]}, 
         {name: "Rechtliche Informationen", id: 2, expand: false, subtopics: [
-                                                                {name: "Darf ich noch raus?", id: 21, link: "/legal"}, 
-                                                                {name: "Woher bekomme ich finanzielle Unterstützung?", id: 22, link: "/legal"}]}, 
+                                                                {name: "Darf ich noch raus?", id: 21, link: "/stayhome"}, 
+                                                                {name: "Woher bekomme ich finanzielle Unterstützung?", id: 22, link: "/finances"}]}, 
         {name: "Informationen zum Virus", id: 3, expand: false, subtopics: [
                                                                 {name: "Was ist das für ein Virus?", id: 31, link: "/virus"}, 
-                                                                {name: "Was wird aktuell geforscht?", id: 32, link: "/virus"}, 
-                                                                {name: "Wie ist die Ausbreitung?", id: 33, link: "/virus"}]}, 
+                                                                {name: "Was wird aktuell geforscht?", id: 32, link: "/research"}, 
+                                                                {name: "Wie ist die Ausbreitung?", id: 33, link: "/distribution"}]}, 
         ],
         // Nachbarschafts Hilfe wo bekommen, wo anbieten?
     }
