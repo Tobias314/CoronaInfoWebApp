@@ -1,6 +1,5 @@
 <template>
   <body>
-    All the Corona Infos you need
     <li v-for="item in themes" :key="item.id">
       <button @click="gotoinfo(item.link)"> 
         {{ item.name }}
@@ -12,11 +11,15 @@
 <script>
 
 export default {
-  name: 'App',
+  name: 'Startpage',
 
   data: function() {
     return {
-      themes: [{"name": "help me vllt habe ich corona", "id": 1, "link": "/medical"}, {"name": "lol ich bin broke", "id": 2, "link": "/legal"}],
+      themes: [
+        {"name": "Persönliche Gesundheit", "id": 1, "link": "/medical"}, 
+        {"name": "Rechtliche Informationen", "id": 2, "link": "/legal"},
+        {"name": "Informationen zum Virus", "id": 3, "link": "/virus"},
+        ],
     }
   },
 

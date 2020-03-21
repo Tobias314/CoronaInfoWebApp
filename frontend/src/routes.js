@@ -4,6 +4,7 @@ import Router from "vue-router";
 import List from "./components/list.vue";
 import LegalInfo from "./components/legalInfo.vue";
 import MedicalInfo from "./components/medicalInfo.vue";
+import GeneralInfo from "./components/generalInfo.vue";
 
 Vue.use(Router);
 
@@ -17,6 +18,10 @@ const router = new Router({
     {
       path: "/medical",
       component: MedicalInfo
+    },
+    {
+      path: "/virus",
+      component: GeneralInfo
     },
     {
       path: "*",
