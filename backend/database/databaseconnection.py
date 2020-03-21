@@ -21,7 +21,7 @@ import config
 '''
 
 #@Singleton
-class DatabaseConnection():
+class DatabaseConnection:
 
     def __init__(self):
         self.connection = sqlite3.connect(config.DATABASE_PATH)

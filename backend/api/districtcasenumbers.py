@@ -18,7 +18,7 @@ def read_district_case_number(district_name: str):
                     ORDER BY data_time_stamp DESC""",
                   (district_name,))
         result = c.fetchone()
-        connection.close
+        connection.close()
     return {'case_number' : int(result[0]),
             'data_time_stamp' : datetime.fromtimestamp(int(result[1]))}
 
