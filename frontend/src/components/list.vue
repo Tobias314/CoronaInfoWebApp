@@ -42,6 +42,7 @@ export default {
                                                                 {name: "Wie ist die Ausbreitung?", id: 33, link: "/distribution"}]}, 
         ],
         // Nachbarschafts Hilfe wo bekommen, wo anbieten?
+        // News
     }
   },
 
