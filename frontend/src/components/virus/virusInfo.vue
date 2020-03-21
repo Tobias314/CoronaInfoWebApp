@@ -1,6 +1,6 @@
 <template>
   <body>
-     insert general info here
+     Böser böser Virus
   </body>
 </template>
 

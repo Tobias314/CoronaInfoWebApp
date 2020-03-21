@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import Api from "./api.js";
+import Api from "../api.js";
 
 export default {
   name: 'medical_info',
@@ -38,11 +38,6 @@ export default {
       console.error(error);
     });
   },
-
-
-  
-
-
 }
 </script>
 
