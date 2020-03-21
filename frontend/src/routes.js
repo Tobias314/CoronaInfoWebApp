@@ -5,6 +5,7 @@ import List from "./components/list.vue";
 import LegalInfo from "./components/legalInfo.vue";
 import MedicalInfo from "./components/medicalInfo.vue";
 import GeneralInfo from "./components/generalInfo.vue";
+import MentalHealthInfo from "./components/mentalhealth.vue";
 
 Vue.use(Router);
 
@@ -22,6 +23,10 @@ const router = new Router({
     {
       path: "/virus",
       component: GeneralInfo
+    },
+    {
+      path: "/mentalhealth",
+      component: MentalHealthInfo
     },
     {
       path: "*",

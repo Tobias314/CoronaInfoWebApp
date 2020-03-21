@@ -32,7 +32,7 @@ export default {
         {name: "Persönliche Gesundheit", id: 1, expand: false, subtopics: [
                                                                 {name: "Habe ich Corona?", id: 11, link: "/medical"}, 
                                                                 {name: "Ich habe Corona, was sollte ich tun?", id: 12, link: "/medical"}, 
-                                                                {name: "Wo bekomme ich Hilfe bei psychischen Problemen?", id: 13, link: "/medical"}]}, 
+                                                                {name: "Wo bekomme ich Hilfe bei psychischen Problemen?", id: 13, link: "/mentalhealth"}]}, 
         {name: "Rechtliche Informationen", id: 2, expand: false, subtopics: [
                                                                 {name: "Darf ich noch raus?", id: 21, link: "/legal"}, 
                                                                 {name: "Woher bekomme ich finanzielle Unterstützung?", id: 22, link: "/legal"}]}, 
@@ -41,6 +41,7 @@ export default {
                                                                 {name: "Was wird aktuell geforscht?", id: 32, link: "/virus"}, 
                                                                 {name: "Wie ist die Ausbreitung?", id: 33, link: "/virus"}]}, 
         ],
+        // Nachbarschafts Hilfe wo bekommen, wo anbieten?
     }
   },
 
