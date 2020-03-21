@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'legal info',
+  name: 'legal_info',
 }
 </script>
 

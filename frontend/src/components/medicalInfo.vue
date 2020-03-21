@@ -14,7 +14,7 @@
 import Api from "./api.js";
 
 export default {
-  name: 'medical info',
+  name: 'medical_info',
 
   data: function(){
     return {
@@ -23,7 +23,7 @@ export default {
   },
 
   mounted(){
-    Api.get(`phone_number/gesundheitsamt/Potsdam`)
+    Api.get(`phone_number/health_department/Potsdam`)
     .then(response => {
       this.gesundheitsamt = response.data;
     }, error => {
