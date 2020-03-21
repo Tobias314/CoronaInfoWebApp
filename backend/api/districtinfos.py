@@ -23,3 +23,17 @@ def get_districts():
     return {'district_names' : district_names,
             'district_states' : district_states}
 
+@router.get("/district_infos/{district_name}")
+def get_districts(district_name: str):
+    spreadsheet = GoogleSpreadSheetCrawler()
+    district_infos = spreadsheet.crawl_spreadsheet('1PYKjc5Kvk1ErUx3aqTGb7Czw5UYYeENUWoV6TZOaQls', 'Kreise!A2:F404')
+    matching_row = None
+    for row in district_infos:
+        if row[0] == district_name:
+            matching_row = row
+    return {'district_state' : matching_row[1],
+            'citizien_hotline' : matching_row[2],
+            'test_hotline' : matching_row[3],
+            'info_web_page' : matching_row[4],
+            'best_practice' : matching_row[5]}
+
