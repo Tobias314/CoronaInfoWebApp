@@ -30,8 +30,8 @@ export default {
     return {
       themes: [
         {name: "Persönliche Gesundheit", id: 1, expand: false, subtopics: [
-                                                                {name: "Habe ich Corona?", id: 11, link: "/medical"}, 
-                                                                {name: "Ich habe Corona, was sollte ich tun?", id: 12, link: "/medical"}, 
+                                                                {name: "Habe ich Corona?", id: 11, link: "/doihavecorona"}, 
+                                                                {name: "Ich habe Corona, was sollte ich tun?", id: 12, link: "/coronaandnow"}, 
                                                                 {name: "Wo bekomme ich Hilfe bei psychischen Problemen?", id: 13, link: "/mentalhealth"}]}, 
         {name: "Rechtliche Informationen", id: 2, expand: false, subtopics: [
                                                                 {name: "Darf ich noch raus?", id: 21, link: "/legal"}, 

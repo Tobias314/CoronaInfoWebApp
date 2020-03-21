@@ -3,7 +3,8 @@ import Router from "vue-router";
 
 import List from "./components/list.vue";
 import LegalInfo from "./components/legalInfo.vue";
-import MedicalInfo from "./components/medicalInfo.vue";
+import CoronaHavingInfo from "./components/coronaandnow.vue";
+import CoronaUnsureInfo from "./components/doihavecorona.vue";
 import GeneralInfo from "./components/generalInfo.vue";
 import MentalHealthInfo from "./components/mentalhealth.vue";
 
@@ -17,8 +18,12 @@ const router = new Router({
       component: LegalInfo
     },
     {
-      path: "/medical",
-      component: MedicalInfo
+      path: "/coronaandnow",
+      component: CoronaHavingInfo
+    },
+    {
+      path: "/doihavecorona",
+      component: CoronaUnsureInfo
     },
     {
       path: "/virus",

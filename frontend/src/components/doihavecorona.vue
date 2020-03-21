@@ -1,12 +1,8 @@
 <template>
   <body>
-    <div>insert medical info here</div>
-
     <a :href="'//' + 'covapp.charite.de/questionaire'" target="_blank">
       Quiz vom Charite
     </a>
-
-    <div> {{gesundheitsamt}} </div>
   </body>
 </template>
 
