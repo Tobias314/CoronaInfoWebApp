@@ -29,6 +29,6 @@ def read_district_case_number(district_name: str):
     return {'type' : matching_row[1],
             'number_cases' : matching_row[3],
             'change_rate' : matching_row[4],
-            'time' : matching_row[9],
-            'bey' : matching_row[1]}
+            'time' : matching_row[9]
+            }
 
