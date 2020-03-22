@@ -1,21 +1,24 @@
 <template>
   <body>
     <div class="full-control">
-    <div class="list">
+      <div class="list">
 
-      <md-list v-for="item in themes" :key="item.id">
-        <md-list-item md-expand :md-expanded.sync="item.expand">
-          <span class="md-list-item-text">{{item.name}}</span>
+        <md-list v-for="item in themes" :key="item.id">
+          <md-list-item md-expand :md-expanded.sync="item.expand">
+            <span class="md-list-item-text">{{item.name}}</span>
 
-          <md-list slot="md-expand">
-            <md-list-item class="md-inset" v-for="subtopic in item.subtopics" :key="subtopic.id" @click=gotoinfo(subtopic.link)>
-              {{ subtopic.name }}
-            </md-list-item>
-          </md-list>
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset" v-for="subtopic in item.subtopics" :key="subtopic.id" @click=gotoinfo(subtopic.link)>
+                {{ subtopic.name }}
+              </md-list-item>
+            </md-list>
+          </md-list-item>
+
+        </md-list>
+        <md-list-item @click="gotoinfo(stupid_vue)">
+          FAQ
         </md-list-item>
-
-      </md-list>
-    </div>
+      </div>
   </div>
 
   </body>
@@ -41,6 +44,7 @@ export default {
                                                                 {name: "Was wird aktuell geforscht?", id: 32, link: "/research"}, 
                                                                 {name: "Wie ist die Ausbreitung?", id: 33, link: "/distribution"}]}, 
         ],
+        stupid_vue : '/faq'
         // Nachbarschafts Hilfe wo bekommen, wo anbieten?
         // News
     }

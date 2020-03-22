@@ -10,6 +10,7 @@ import VirusInfo from "./components/virus/virusInfo.vue";
 import Research from "./components/virus/research.vue";
 import Distribution from "./components/virus/distribution.vue";
 import List from "./components/list.vue";
+import Faq from "./components/faqs/faqs.vue"
 
 Vue.use(Router);
 
@@ -47,6 +48,10 @@ const router = new Router({
     {
       path: "/distribution",
       component: Distribution
+    },
+    {
+      path:"/faq",
+      component: Faq
     },
     {
       path: "*",

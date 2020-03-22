@@ -46,4 +46,12 @@ class FaqsData:
             WHERE question MATCH ? OR answer MATCH ?;
         """, (search_phrase, search_phrase))
         self.db_connection.commit()
-        return result.fetchall()
+        return [FaqItem(*item) for item in result.fetchall()]
+
+    def get_all_faqs(self):
+        result = self.cursor.execute("""
+            SELECT * 
+            FROM Faqs 
+        """)
+        self.db_connection.commit()
+        return [FaqItem(*item) for item in result.fetchall()]
