@@ -1,13 +1,14 @@
 <template>
   <body>
-    <div class="full-control">
-      <div class="list">
+    <div >
+      <div>
 
         <md-list v-for="faq in faqs" :key="faq.question">
-          <md-list-item md-expand>
-                {{ faq.answer}}
+            <md-list-item class='question' md-expand>
+            <span>{{faq.question}}</span>
+            <div class='expandable_answer' slot="md-expand" v-html="faq.answer">
+            </div>
           </md-list-item>
-
         </md-list>
       </div>
   </div>
@@ -34,7 +35,7 @@ export default {
   },
 
   mounted(){
-    Api.get(`/faqs/get_all_faqs`)
+    Api.get(`/faqs/get_faqs/`)
     .then(response => {
       this.faqs = response.data.faqs;
     }, error => {
@@ -81,4 +82,20 @@ export default {
     flex-direction: column;
     padding: 16px;
   }
+
+  .md-list-item-text p {
+  white-space: normal;
+  padding-bottom: 1rem;
+}
+
+.question{
+  white-space: normal;
+  background: grey;
+}
+
+.expandable_answer{
+  white-space: normal;
+  background: lightgray;
+}
+
 </style>
