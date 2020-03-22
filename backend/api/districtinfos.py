@@ -64,10 +64,28 @@ def post_question(district_name: str, question: str):
     crawler.post_data(QUESTION_SHEET, "Fragen!A2:D", values)
 
 
+@dataclasses.dataclass
+class StateInfo:
+    state: str
+    max_number_public: str
+    club_sport_allowed: bool
+    website: str
+    is_lockdown: bool
+
+
 
 @router.get("/lockdown_info/{district_name}")
 def get_public_measures_info(district_name: str):
-    state: str = get_state_for_district(district_name)
+    state_of_district: str = get_state_for_district(district_name)
+    crawler = GoogleSpreadSheetCrawler()
+    states_raw = crawler.crawl_spreadsheet(DISTRICT_SHEET, "Bundeslaender!A2:E")
+    states_raw = [state for state in states_raw if len(state) == 5]
+    states: List[StateInfo] = [StateInfo(state[0], state[1], state[2] == "ja", state[3], state[4] == "ja") for state in states_raw]
+    info_for_requested_state: StateInfo = next(filter(lambda state_info: state_info.state == state_of_district, states))
+    return info_for_requested_state
+
+
+
 
 
 
