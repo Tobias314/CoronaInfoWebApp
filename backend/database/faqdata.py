@@ -39,19 +39,33 @@ class FaqsData:
                                     """, (faq_item.district, faq_item.state, faq_item.question, faq_item.answer, faq_item.tags))
         self.db_connection.commit()
 
-    def full_text_search(self, search_phrase: str):
-        result = self.cursor.execute("""
-            SELECT * 
-            FROM Faqs 
-            WHERE question MATCH ? OR answer MATCH ?;
-        """, (search_phrase, search_phrase))
+    def full_text_search(self, search_phrase: str, state:str=None):
+        if state is not None:
+            result = self.cursor.execute("""
+                SELECT * 
+                FROM Faqs 
+                WHERE (question MATCH ? OR answer MATCH ?) AND (state_name = ? OR state_name = 'ALL');
+            """, (search_phrase, search_phrase, state))
+        else:
+            result = self.cursor.execute("""
+                SELECT * 
+                FROM Faqs 
+                WHERE question MATCH ? OR answer MATCH ?;
+            """, (search_phrase, search_phrase))
         self.db_connection.commit()
         return [FaqItem(*item) for item in result.fetchall()]
 
-    def get_all_faqs(self):
-        result = self.cursor.execute("""
-            SELECT * 
-            FROM Faqs 
-        """)
+    def get_all_faqs(self, state:str=None):
+        if state is not None:
+            result = self.cursor.execute("""
+                SELECT * 
+                FROM Faqs 
+                WHERE (state_name = ? OR state_name = 'ALL');
+            """, (state,))
+        else:
+            result = self.cursor.execute("""
+                SELECT * 
+                FROM Faqs 
+            """)
         self.db_connection.commit()
         return [FaqItem(*item) for item in result.fetchall()]

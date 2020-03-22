@@ -40,7 +40,13 @@ export default {
       this.$router.push(link); 
     },
     search: function(){
-        Api.get(`/faqs/filter_faqs/`, {params:{search_phrase: this.search_phrase}})
+        var request_config;
+        if(this.$parent.location == ''){
+            request_config = {params:{search_phrase: this.search_phrase}};
+        }else{
+            request_config = {params:{search_phrase: this.search_phrase, district:this.$parent.location}};
+        }
+        Api.get(`/faqs/filter_faqs/`, request_config)
         .then(response => {
         this.faqs = response.data.faqs;
         }, error => {
@@ -50,7 +56,13 @@ export default {
   },
 
   mounted(){
-    Api.get(`/faqs/get_faqs/`)
+    var request_config;
+    if(this.$parent.location == ''){
+        request_config = {params:{search_phrase: this.search_phrase}};
+    }else{
+        request_config = {params:{search_phrase: this.search_phrase, district:this.$parent.location}};
+    }
+    Api.get(`/faqs/get_faqs/`, request_config)
     .then(response => {
       this.faqs = response.data.faqs;
     }, error => {
