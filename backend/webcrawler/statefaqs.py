@@ -1,5 +1,6 @@
 import scrapy
 from database.databaseconnection import DatabaseConnection
+from database.faqdata import FaqsData, FaqItem
 import re
 import datetime
 
@@ -10,18 +11,12 @@ class GeneralFaqSaxonyAnhaltSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        self.dbc = DatabaseConnection()
+        faqsData = FaqsData()
         questions_with_answers = response.css('#c233373 li')
-        c = self.dbc.cursor()
         for i in range(len(questions_with_answers)):
             question = questions_with_answers[i].css('strong::text').get()
             answer = re.search(r'<br>(.*)</li>', questions_with_answers[i].css('li').get()).group(1)
-
-            c.execute("""
-                        REPLACE INTO Faqs
-                        VALUES ('ALL','Sachsen-Anhalt',?,?,'')
-                        """, (question, answer))
-        self.dbc.commit()
+            faqsData.create_or_update_question(FaqItem('ALL', 'Sachsen-Anhalt', question, answer, ''))
 
 class SchoolFaqSaxonyAnhaltSpider(scrapy.Spider):
     name = 'school_faq_saxony_anhalt'
@@ -30,15 +25,9 @@ class SchoolFaqSaxonyAnhaltSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        self.dbc = DatabaseConnection()
+        faqsData = FaqsData()
         questions_with_answers = response.xpath('//body').re(r'<h2>.*?.</h2>.*?<a.*?Zum Seitenanfang</a>')
-        c = self.dbc.cursor()
         for i in range(len(questions_with_answers)):
             question = re.search(r'<h2>(.*?.)</h2>', questions_with_answers[i]).group(1)
             answer = re.search(r'<h2>.*?.</h2>(.*?)<a.*?Zum Seitenanfang</a>', questions_with_answers[i]).group(1)
-
-            c.execute("""
-                        REPLACE INTO Faqs
-                        VALUES ('ALL','Sachsen-Anhalt',?,?,'#Schule')
-                        """, (question, answer))
-        self.dbc.commit()
+            faqsData.create_or_update_question(FaqItem('ALL', 'Sachsen-Anhalt', question, answer, '#Schule'))

@@ -26,7 +26,7 @@ class DatabaseConnection:
     def __init__(self):
         self.connection = sqlite3.connect(config.DATABASE_PATH)
 
-    def __del__(self):
+    def close(self):
         self.connection.close()
 
     def cursor(self):

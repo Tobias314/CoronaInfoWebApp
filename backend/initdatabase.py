@@ -2,6 +2,7 @@ import sqlite3
 import os
 import config
 from database.databaseconnection import DatabaseConnection
+from database.faqdata import FaqsData
 
 if os.path.exists(config.DATABASE_PATH):
     os.remove(config.DATABASE_PATH)
@@ -35,9 +36,7 @@ c.execute("INSERT INTO Districts VALUES ('Magdeburg')")
 
 c.execute('''CREATE TABLE DistrictCaseNumbers
              (district_name text, source_url text, case_number integer, data_time_stamp text)''')
-
-c.execute('''CREATE TABLE Faqs
-             (district_name text, state_name text, question text, answer text, tags text,
-             PRIMARY KEY(district_name, state_name, question));''')
-
 db.commit()
+
+faqsData = FaqsData()
+faqsData.create_database_tables()

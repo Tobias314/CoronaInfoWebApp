@@ -5,6 +5,7 @@ from api import phonenumbers
 from api import districtcasenumbers
 from api import districtinfos
 from api import weblinks
+from api import faqs
 
 app = FastAPI()
 
@@ -25,3 +26,4 @@ app.include_router(phonenumbers.router)
 app.include_router(districtcasenumbers.router)
 app.include_router(districtinfos.router)
 app.include_router(weblinks.router)
+app.include_router(faqs.router)
