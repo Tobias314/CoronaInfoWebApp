@@ -5,8 +5,9 @@ from scrapy.crawler import CrawlerProcess
 
 import config
 from webcrawler.districtcasenumbers import DistrictCaseNumbersSaxonyAnhaltSpider
+from webcrawler.statefaqs import GeneralFaqSaxonyAnhaltSpider, SchoolFaqSaxonyAnhaltSpider
 
-spiders = [DistrictCaseNumbersSaxonyAnhaltSpider]
+spiders = [GeneralFaqSaxonyAnhaltSpider, SchoolFaqSaxonyAnhaltSpider]
 
 def sleep(self, *args, seconds):
     """Non blocking sleep callback"""
