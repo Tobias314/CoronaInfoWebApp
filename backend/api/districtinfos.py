@@ -5,12 +5,13 @@ from webcrawler.googlespreadsheet.googlespreadhsheetcrawler import GoogleSpreadS
 
 router = APIRouter()
 QUESTION_SHEET = "1UpKyRQVA5wW32wSkW0xajl5rvxJ28Ogmgazt5xIGX10"
+DISTRICT_SHEET = '1PYKjc5Kvk1ErUx3aqTGb7Czw5UYYeENUWoV6TZOaQls'
 
 
 @router.get("/district_infos/get_districts")
 def get_districts():
     spreadsheet = GoogleSpreadSheetCrawler()
-    district_infos = spreadsheet.crawl_spreadsheet('1PYKjc5Kvk1ErUx3aqTGb7Czw5UYYeENUWoV6TZOaQls', 'Kreise!A2:B404')
+    district_infos = spreadsheet.crawl_spreadsheet(DISTRICT_SHEET, 'Kreise!A2:B404')
     district_names = [row[0] for row in district_infos]
     district_states = [row[1] for row in district_infos]
 
@@ -28,7 +29,7 @@ def get_districts():
 @router.get("/district_infos/{district_name}")
 def get_districts(district_name: str):
     spreadsheet = GoogleSpreadSheetCrawler()
-    district_infos = spreadsheet.crawl_spreadsheet('1PYKjc5Kvk1ErUx3aqTGb7Czw5UYYeENUWoV6TZOaQls', 'Kreise!A2:F404')
+    district_infos = spreadsheet.crawl_spreadsheet(DISTRICT_SHEET, 'Kreise!A2:F404')
     matching_row = None
     for row in district_infos:
         if row[0] == district_name:
@@ -57,7 +58,21 @@ def get_questions(district_name: str):
 
 
 @router.post("/help/{district_name}")
-def post_question(district_name: str, state: str, question: str):
-    values: List[List[str]] = [[district_name, state, question, ""]]
+def post_question(district_name: str, question: str):
+    values: List[List[str]] = [[district_name, "", question, ""]]
     crawler = GoogleSpreadSheetCrawler()
     crawler.post_data(QUESTION_SHEET, "Fragen!A2:D", values)
+
+
+
+@router.get("/lockdown_info/{district_name}")
+def get_public_measures_info(district_name: str):
+    state: str = get_state_for_district(district_name)
+
+
+
+def get_state_for_district(district_name: str) -> str:
+    crawler = GoogleSpreadSheetCrawler()
+    districts = crawler.crawl_spreadsheet(DISTRICT_SHEET, "Kreise!A2:B")
+    district: List[str] = next(filter(lambda district: district[0] == district_name, districts))
+    return district[1]
