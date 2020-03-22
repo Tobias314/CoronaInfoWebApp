@@ -1,13 +1,10 @@
 import dataclasses
-import json
 from typing import List
 from fastapi import APIRouter
-from datetime import datetime
-import sqlite3
-import config
 from webcrawler.googlespreadsheet.googlespreadhsheetcrawler import GoogleSpreadSheetCrawler
 
 router = APIRouter()
+QUESTION_SHEET = "1UpKyRQVA5wW32wSkW0xajl5rvxJ28Ogmgazt5xIGX10"
 
 
 @router.get("/district_infos/get_districts")
@@ -53,7 +50,14 @@ class Question:
 @router.get("/help/{district_name}")
 def get_questions(district_name: str):
     spreadsheet = GoogleSpreadSheetCrawler()
-    questions_raw = spreadsheet.crawl_spreadsheet('1UpKyRQVA5wW32wSkW0xajl5rvxJ28Ogmgazt5xIGX10', 'Fragen!A2:D')
+    questions_raw = spreadsheet.crawl_spreadsheet(QUESTION_SHEET, 'Fragen!A2:D')
     questions: List[Question] = [Question(info[0], info[2], info[3]) for info in questions_raw]
     only_for_district: List[Question] = [question for question in questions if question.district == district_name]
     return [question for question in only_for_district]
+
+
+@router.post("/help/{district_name}")
+def post_question(district_name: str, state: str, question: str):
+    values: List[List[str]] = [[district_name, state, question, ""]]
+    crawler = GoogleSpreadSheetCrawler()
+    crawler.post_data(QUESTION_SHEET, "Fragen!A2:D", values)

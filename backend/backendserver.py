@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+
 
 from api import phonenumbers
 from api import districtcasenumbers
@@ -27,3 +29,6 @@ app.include_router(districtcasenumbers.router)
 app.include_router(districtinfos.router)
 app.include_router(weblinks.router)
 app.include_router(faqs.router)
+
+if __name__ == "__main__":
+    uvicorn.run(app)
