@@ -3,7 +3,6 @@
     <h3>
       Darf ich noch raus?
     </h3>
-    {{infos}}
     <div v-if="infos_loaded">
     <div v-if="infos.is_lockdown"><b> In {{this.$parent.location}} gibt es eine Ausgangssperre! </b></div>
     <div v-if="!infos.is_lockdown"> In {{this.$parent.location}} gibt es keine Ausgangssperre. Trotzdem ist es ratsam zuhause zu bleiben!</div>
