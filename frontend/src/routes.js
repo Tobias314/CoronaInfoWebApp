@@ -4,6 +4,8 @@ import Router from "vue-router";
 import CoronaUnsureInfo from "./components/medical/doihavecorona.vue";
 import CoronaHavingInfo from "./components/medical/coronaandnow.vue";
 import MentalHealthInfo from "./components/medical/mentalhealth.vue";
+import Testing from "./components/medical/testing.vue"
+
 import stayHome from "./components/legal/stayhomeinfo.vue"
 import financialSupoort from "./components/legal/financialSupport.vue";
 import VirusInfo from "./components/virus/virusInfo.vue";
@@ -52,6 +54,11 @@ const router = new Router({
     {
       path:"/faq",
       component: Faq
+    },
+    {
+      path:"/testing",
+      component: Testing,
+      props: true
     },
     {
       path: "*",
